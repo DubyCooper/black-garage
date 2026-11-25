@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BLACK GARAGE — студия автомобильного детейлинга.">
+<title>BLACK GARAGE — Detailing Studio</title>
+<style>
+:root {
+  --orange: #E88B42;
+  --dark: #171717;
+  --light: #F7F7F5;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--light);
+  color: var(--dark);
+  font-family: Arial, sans-serif;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: white;
+}
+.logo {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+.logo small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+button, .btn {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--dark);
+  border: none;
+  border-radius: 7px;
+  padding: 15px 22px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .25s;
+}
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  background: #F5B879;
+}
+header .btn {
+  background: var(--dark);
+  color: white;
+}
+section {
+  padding: 65px 6%;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #99602F;
+}
+h1 {
+  font-size: clamp(35px, 7.5vw, 85px);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin: 25px 0;
+  font-weight: 900;
+  background: linear-gradient(180deg,#F5B879,#D87930);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+h2 {
+  font-size: clamp(28px,5vw,48px);
+  letter-spacing: -1px;
+  margin: 15px 0 25px;
+}
+p {
+  color: #666;
+  line-height: 1.7;
+}
+.hero {
+  min-height: 65vh;
+}
+.hero p {
+  max-width: 520px;
+}
+.car {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  margin-top: 25px;
+  mix-blend-mode: multiply;
+  animation: appear 1.3s ease both;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 25px;
+}
+.facts strong {
+  display: block;
+  color: #D87930;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.facts span {
+  font-size: 12px;
+  color: #666;
+}
+.services {
+  background: white;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 18px;
+}
+.service {
+  padding: 25px;
+  border: 1px solid #E6E6E2;
+  border-radius: 12px;
+  background: var(--light);
+}
+.service h3 {
+  margin: 15px 0;
+}
+.service p {
+  font-size: 14px;
+}
+.price {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+.service button {
+  background: #F9EDE2;
+  color: #914B17;
+}
+.compare {
+  position: relative;
+  height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(
+    155deg,#16191e,#9299a2 40%,
+    #e1e5e8 43%,#353a41 50%,#111
+  );
+}
+.before {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      115deg,transparent 0px,
+      transparent 21px,
+      #ffffff35 22px,
+      transparent 24px
+    ),
+    #a49b7d66;
+  clip-path: inset(0 50% 0 0);
+}
+.compare-line {
+  position: absolute;
+  left: 50%;
+  height: 100%;
+  width: 3px;
+  background: white;
+}
+.compare-line:after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: white;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+.tag {
+  position: absolute;
+  top: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.tag-before {
+  left: 15px;
+  background: #171717;
+  color: white;
+}
+.tag-after {
+  right: 15px;
+  background: var(--orange);
+}
+input[type=range] {
+  width: 100%;
+  accent-color: var(--orange);
+  margin-top: 20px;
+}
+.booking {
+  background: #171717;
+  color: white;
+}
+.booking p {
+  color: #aaa;
+}
+form {
+  max-width: 550px;
+}
+form label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+form input, form select {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  background: white;
+  color: #171717;
+  font-size: 16px;
+}
+form button {
+  width: 100%;
+}
+#message {
+  color: #F5B879;
+  margin-top: 15px;
+}
+footer {
+  padding: 30px 6%;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.8;
+}
+@media(max-width:600px) {
+  section {
+    padding: 40px 5%;
+  }
+  .grid {
+    gap: 10px;
+  }
+  .service {
+    padding: 15px;
+  }
+  .service button {
+    width: 100%;
+    padding: 12px 5px;
+  }
+  .price {
+    font-size: 17px;
+  }
+  header {
+    padding: 15px 5%;
+  }
+  header .btn {
+    padding: 12px;
+  }
+  .logo {
+    font-size: 18px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .car {
+    animation: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    BLACK GARAGE
+    <small>DETAILING STUDIO</small>
+  </div>
+  <a class="btn" href="#booking">Записаться</a>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">
+      АВТОМОБИЛЬНЫЙ ДЕТЕЙЛИНГ / МОСКВА
+    </div>
+    <h1>Совершенство<br>в деталях.</h1>
+    <p>
+      Профессиональный уход за автомобилем.
+      Чистота, защита и безупречный внешний вид.
+    </p>
+    <a class="btn" href="#services">
+      Услуги и цены ↗
+    </a>
+
+    <img class="car"
+      src="bmw-m4.jpg"
+      alt="BMW M4 Competition"
+      onerror="this.style.display='none'">
+
+    <div class="facts">
+      <div>
+        <strong>01</strong>
+        <span>Индивидуальный подход</span>
+      </div>
+      <div>
+        <strong>02</strong>
+        <span>Уход и защита</span>
+      </div>
+      <div>
+        <strong>03</strong>
+        <span>Внимание к деталям</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="eyebrow">НАШИ УСЛУГИ</div>
+    <h2>Больше, чем мойка.</h2>
+
+    <div class="grid">
+      <article class="service">
+        <div class="eyebrow">01 / SERVICE</div>
+        <h3>Полировка</h3>
+        <p>Восстановление блеска кузова и устранение мелких царапин.</p>
+        <span class="price">от 8 000 ₽</span>
+        <button onclick="choose(0)">Выбрать →</button>
+      </article>
+
+      <article class="service">
+        <div class="eyebrow">02 / SERVICE</div>
+        <h3>Химчистка</h3>
+        <p>Глубокая очистка салона и уход за его поверхностями.</p>
+        <span class="price">от 6 000 ₽</span>
+        <button onclick="choose(1)">Выбрать →</button>
+      </article>
+
+      <article class="service">
+        <div class="eyebrow">03 / SERVICE</div>
+        <h3>Керамика</h3>
+        <p>Защитное покрытие кузова и глубокий зеркальный блеск.</p>
+        <span class="price">от 18 000 ₽</span>
+        <button onclick="choose(2)">Выбрать →</button>
+      </article>
+
+      <article class="service">
+        <div class="eyebrow">04 / SERVICE</div>
+        <h3>Оклейка плёнкой</h3>
+        <p>Защита лакокрасочного покрытия от внешних повреждений.</p>
+        <span class="price">от 25 000 ₽</span>
+        <button onclick="choose(3)">Выбрать →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">РЕЗУЛЬТАТ НАШЕЙ РАБОТЫ</div>
+    <h2>Разница очевидна.</h2>
+
+    <div class="compare">
+      <div class="before" id="before"></div>
+      <div class="compare-line" id="line"></div>
+      <span class="tag tag-before">ДО</span>
+      <span class="tag tag-after">ПОСЛЕ</span>
+    </div>
+
+    <input type="range" min="0" max="100"
+      value="50"
+      aria-label="Сравнение до и после"
+      oninput="compare(this.value)">
+
+    <p style="text-align:center;font-size:13px">
+      Передвигайте ползунок для сравнения.
+      Демонстрация эффекта.
+    </p>
+  </div>
+</section>
+
+<section style="background:#EDEDE9">
+  <div class="container">
+    <div class="eyebrow">НАША ФИЛОСОФИЯ</div>
+    <h2>Ваш автомобиль.<br>Наше внимание.</h2>
+    <p>
+      Подбираем уход под состояние автомобиля
+      и ваши задачи. Согласовываем объём работ
+      и стоимость до начала обслуживания.
+    </p>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="container">
+    <div class="eyebrow" style="color:#E88B42">
+      ОНЛАЙН-ЗАПИСЬ
+    </div>
+    <h2>Позаботьтесь о своём автомобиле.</h2>
+    <p>Выберите услугу и оставьте заявку.</p>
+
+    <form id="bookingForm">
+      <label for="name">Ваше имя</label>
+      <input id="name" type="text"
+        placeholder="Александр" required>
+
+      <label for="phone">Телефон</label>
+      <input id="phone" type="tel"
+        placeholder="+7 (999) 000-00-00" required>
+
+      <label for="service">Услуга</label>
+      <select id="service">
+        <option>Полировка</option>
+        <option>Химчистка</option>
+        <option>Керамика</option>
+        <option>Оклейка плёнкой</option>
+      </select>
+
+      <button type="submit">
+        Оставить заявку →
+      </button>
+      <div id="message" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © BLACK GARAGE — Detailing Studio<br>
+  Москва · Демонстрационный проект<br>
+  Цены условные. Заявки не отправляются.
+</footer>
+
+<script>
+function choose(index) {
+  document.getElementById('service').selectedIndex = index;
+  document.getElementById('booking').scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+function compare(value) {
+  document.getElementById('before').style.clipPath =
+    'inset(0 ' + (100-value) + '% 0 0)';
+  document.getElementById('line').style.left = value + '%';
+}
+
+document.getElementById('bookingForm')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.getElementById('message').textContent =
+      '✓ Тестовая заявка заполнена. Данные не отправлены.';
+  });
+</script>
+
+</body>
+</html>
