@@ -38,9 +38,10 @@ def main():
         parser.close()
         for ref in set(parser.refs):
             url = urlsplit(ref)
-            if url.scheme or url.netloc or not url.path or url.path.startswith("/"):
+            if url.scheme or url.netloc or not url.path:
                 continue
-            target = (path.parent / unquote(url.path)).resolve()
+            target = (ROOT / unquote(url.path).lstrip("/") if url.path.startswith("/")
+                      else path.parent / unquote(url.path)).resolve()
             if not target.is_relative_to(ROOT) or not target.exists():
                 errors.append(f"{name}: missing or out-of-tree local reference: {ref}")
         for number, (kind, source) in enumerate(parser.scripts, 1):
@@ -53,7 +54,7 @@ def main():
                 with tempfile.TemporaryDirectory() as tmp:
                     js = Path(tmp) / ("check.mjs" if kind == "module" else "check.js")
                     js.write_text(source, encoding="utf-8")
-                    result = subprocess.run(["node", "--check", str(js)], capture_output=True, text=True)
+                    result = subprocess.run(["node", "--check", str(js)], capture_output=True, text=True, timeout=15)
                     if result.returncode:
                         errors.append(f"{name}: JS script {number}: {result.stderr}")
         print(f"Inspected {name}: {len(set(parser.refs))} references, {len(parser.scripts)} inline scripts")
